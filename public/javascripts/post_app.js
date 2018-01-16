@@ -1,5 +1,5 @@
 function viewIndex(){
-  var url = 'http://localhost:3000/api/users';
+  var url = 'http://localhost:3000/api/post';
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url);
@@ -11,13 +11,13 @@ function viewIndex(){
 
       var rows = '';
 
-      for(var i=0; i<data['users'].length; i++){
+      for(var i=0; i<data['post'].length; i++){
 
-        let thisn = data['users'][i];
-        let id=thisn._id;
-        let name=thisn.last_name + ', ' + thisn.first_name;
-        let username=thisn.username;
-        let email=thisn.email;
+        let thisn = data['post'][i];
+        let user_id=thisn.user_id;
+        let title=thisn.title;
+        let body=thisn.body;
+        let description=thisn.description;
 
         rows = rows + `<tr>
           <td><a href="#edit-${id}" onclick="viewUser('${id}')">${name}</a></td>
@@ -31,9 +31,11 @@ function viewIndex(){
       app.innerHTML = `<table class="table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Email</th>
+            <th>User_Id</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Description</th>
+
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -44,7 +46,7 @@ function viewIndex(){
 
 function viewUser(who){
 
-  var url = 'http://localhost:3000/api/users/view/' + who;
+  var url = 'http://localhost:3000/api/post/view/' + who;
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url);
@@ -60,46 +62,37 @@ function viewUser(who){
     app.innerHTML = `<h2>${data.user[0].last_name}, ${data.user[0].first_name}</h2>
       <table class="table">
         <tbody>
-          <tr><th>ID </th><td>${data.user[0]._id}</td></tr>
-          <tr><th>First Name </th><td>${data.user[0].first_name}</td></tr>
-          <tr><th>Last Name </th><td>${data.user[0].last_name}</td></tr>
-          <tr><th>Username </th><td>${data.user[0].username}</td></tr>
-          <tr><th>Email </th><td>${data.user[0].email}</td></tr>
+          <tr><th>User_Id </th><td>${data.user[0].user_id}</td></tr>
+          <tr><th>Title </th><td>${data.user[0].title}</td></tr>
+          <tr><th>Body </th><td>${data.user[0].body}</td></tr>
+          <tr><th>Description </th><td>${data.user[0].description}</td></tr>
         </tbody>
       </table>
 
       <h3>Edit the User Record</h3>
-      <form id="editUser" action="/users/edit" method="post">
+      <form id="editUser" action="/post/edit" method="post">
         <input type="hidden" name="_id" value="${data.user[0]._id}">
         <div>
-          <label for="username">Username</label>
-          <input type="text" value="${data.user[0].username}" name="username" id="username">
+          <label for="user_id">User_Id</label>
+          <input type="text" value="${data.user[0].user_id}" name="user_id" id="user_id">
         </div>
 
         <div>
-          <label for="email">Email</label>
-          <input type="text" value="${data.user[0].email}" name="email" id="email">
+          <label for="title">Title</label>
+          <input type="text" value="${data.user[0].title}" name="title" id="title">
         </div>
 
         <div>
-          <label for="first_name">First Name</label>
-          <input type="text" value="${data.user[0].first_name}" name="first_name" id="first_name">
+          <label for="body">Body</label>
+          <input type="text" value="${data.user[0].body}" name="body" id="body">
         </div>
 
         <div>
-          <label for="last_name">Last Name</label>
-          <input type="text" value="${data.user[0].last_name}" name="last_name" id="last_name">
+          <label for="description">Description</label>
+          <input type="text" value="${data.user[0].description}" name="description" id="description">
         </div>
         <input type="submit" value="Submit">
       </form>
-
-      <div>
-        <delete for="delete">Delete</label>
-        <delete type="text" value="{delete}" name="delete" id="delete">
-      </div>
-      <delete type="submit" value="Submit">
-    </form>
-
     `;
 
     var editUser = document.getElementById('editUser');
@@ -108,7 +101,7 @@ function viewUser(who){
       e.preventDefault();
 
       formData = new FormData(editUser);
-      var url = 'http://localhost:3000/api/users/edit';
+      var url = 'http://localhost:3000/api/post/edit';
 
       var xhr = new XMLHttpRequest();
       xhr.open('POST', url);
@@ -141,25 +134,25 @@ function createUser(){
   var app = document.getElementById('app');
 
   app.innerHTML = `<h2>Create a New User</h2>
-    <form id="createUser" action="/api/users/create" method="post">
+    <form id="createUser" action="/api/post/create" method="post">
       <div>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
+        <label for="user_id">User_Id</label>
+        <input type="text" name="user_id" id="user_id">
       </div>
 
       <div>
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
       </div>
 
       <div>
-        <label for="first_name">First Name</label>
-        <input type="text" name="first_name" id="first_name">
+        <label for="body">Body</label>
+        <input type="text" name="body" id="body">
       </div>
 
       <div>
-        <label for="last_name">Last Name</label>
-        <input type="text" name="last_name" id="last_name">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description">
       </div>
       <input type="submit" value="Submit">
     </form>
@@ -170,7 +163,7 @@ function createUser(){
     e.preventDefault();
 
     formData = new FormData(createUser);
-    var url = 'http://localhost:3000/api/users/create';
+    var url = 'http://localhost:3000/api/post/create';
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
