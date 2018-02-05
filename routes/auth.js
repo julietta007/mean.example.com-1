@@ -8,7 +8,7 @@ router.get(
   '/github/callback',
   passport.authenticate('github', {'failureRedirect':'/'}),
   function(req, res){
-    
+
     return res.redirect('/users');
   }
 );

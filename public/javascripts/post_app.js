@@ -1,5 +1,5 @@
 function viewIndex(){
-  var url = 'http://localhost:3000/api/post';
+  var url = 'http://localhost:3000/api/posts';
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url);
@@ -8,21 +8,22 @@ function viewIndex(){
   xhr.onload = function(){
 
       let data = JSON.parse(xhr.response);
-
       var rows = '';
 
-      for(var i=0; i<data['post'].length; i++){
+      for(var i=0; i<data['posts'].length; i++){
 
-        let thisn = data['post'][i];
-        let user_id=thisn.user_id;
+        let thisn = data['posts'][i];
+        let id=thisn._id;
+        let slug=thisn._slug;
         let title=thisn.title;
         let body=thisn.body;
+        let keywords=thisn.keywords;
         let description=thisn.description;
+        let published=thisn.published;
 
         rows = rows + `<tr>
-          <td><a href="#edit-${id}" onclick="viewUser('${id}')">${name}</a></td>
-          <td>${username}</td>
-          <td>${email}</td>
+          <td><a href="#edit-${slug}" onclick="viewPost('${slug}')">${title}</a></td>
+          <td>${published}</td>
         </tr>`;
 
       }
@@ -31,11 +32,8 @@ function viewIndex(){
       app.innerHTML = `<table class="table">
         <thead>
           <tr>
-            <th>User_Id</th>
             <th>Title</th>
-            <th>Body</th>
-            <th>Description</th>
-
+            <th>Pub Date</th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -44,9 +42,9 @@ function viewIndex(){
 }
 
 
-function viewUser(who){
+function viewPost(postId){
 
-  var url = 'http://localhost:3000/api/post/view/' + who;
+  var url = 'http://localhost:3000/api/posts/view/' + postId;
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url);
@@ -55,53 +53,71 @@ function viewUser(who){
   xhr.onload = function(){
 
     var app = document.getElementById('app');
-
-
     let data = JSON.parse(xhr.response);
 
-    app.innerHTML = `<h2>${data.user[0].last_name}, ${data.user[0].first_name}</h2>
-      <table class="table">
-        <tbody>
-          <tr><th>User_Id </th><td>${data.user[0].user_id}</td></tr>
-          <tr><th>Title </th><td>${data.user[0].title}</td></tr>
-          <tr><th>Body </th><td>${data.user[0].body}</td></tr>
-          <tr><th>Description </th><td>${data.user[0].description}</td></tr>
-        </tbody>
-      </table>
+    app.innerHTML = `<h2>${data.post[0].ltitle}</h2>
+        <h3>Body</h3>
+        <div>${data.post[0].body}</div>
+        <h3>Description</h3>
+        <div>${data.post[0].description}</div>
+        <h3>Keywords</h3>
+        <div>${data.post[0].keywords}</div>
+        <h3>published</h3>
+        <div>${data.post[0].published}</div>
 
-      <h3>Edit the User Record</h3>
-      <form id="editUser" action="/post/edit" method="post">
-        <input type="hidden" name="_id" value="${data.user[0]._id}">
-        <div>
-          <label for="user_id">User_Id</label>
-          <input type="text" value="${data.user[0].user_id}" name="user_id" id="user_id">
-        </div>
-
+      <h3>Edit the Post</h3>
+      <form id="editPost" action="/posts/edit" method="post">
+        <input type="hidden" name="_id" value="${data.post[0]._id}">
         <div>
           <label for="title">Title</label>
-          <input type="text" value="${data.user[0].title}" name="title" id="title">
+          <input type="text" value="${data.post[0].title}" name="title" id="title">
         </div>
 
         <div>
           <label for="body">Body</label>
-          <input type="text" value="${data.user[0].body}" name="body" id="body">
+          <textarea name="body" id="body">${data.post[0].body}</textarea>
+        </div>
+
+        <div>
+          <label for="keywords">Keywords</label>
+          <textarea name="keywords" id="keywords">${data.post[0].keywords}</textarea>
         </div>
 
         <div>
           <label for="description">Description</label>
-          <input type="text" value="${data.user[0].description}" name="description" id="description">
+          <textarea name="description" id="description">${data.post[0].description}</textarea>
+        </div>
+
+        <div>
+          <label for="published">Pub Date</label>
+          <input type="text" value="${data.post[0].published}" name="published" id="published">
         </div>
         <input type="submit" value="Submit">
       </form>
-    `;
 
-    var editUser = document.getElementById('editUser');
+        <div class="delete">
+        <a href="#delete" onclick="deletePost('${data.post[0]._id}');">Delete</a>
+      </div>
 
-    editUser.addEventListener('submit', function(e){
+    <h1>Image gallery example</h1>
+
+<div class="full-img">
+  <img class="displayed-img" src="images/pic1.jpg">
+  <div class="overlay"></div>
+  <button class="dark">Darken</button>
+</div>
+
+<div class="thumb-bar">
+</div>
+`;
+
+    var editPost = document.getElementById('editPost');
+
+    editPost.addEventListener('submit', function(e){
       e.preventDefault();
 
-      formData = new FormData(editUser);
-      var url = 'http://localhost:3000/api/post/edit';
+      formData = new FormData(editPost);
+      var url = 'http://localhost:3000/api/posts/edit';
 
       var xhr = new XMLHttpRequest();
       xhr.open('POST', url);
@@ -129,41 +145,42 @@ function viewUser(who){
 
 }
 
-function createUser(){
+function createPost(){
 
   var app = document.getElementById('app');
 
-  app.innerHTML = `<h2>Create a New User</h2>
-    <form id="createUser" action="/api/post/create" method="post">
-      <div>
-        <label for="user_id">User_Id</label>
-        <input type="text" name="user_id" id="user_id">
-      </div>
+  app.innerHTML = `<h2>Create a New Post</h2>
 
-      <div>
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title">
-      </div>
-
-      <div>
-        <label for="body">Body</label>
-        <input type="text" name="body" id="body">
-      </div>
-
-      <div>
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description">
-      </div>
+  <div>
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title">
+  </div>
+  <div>
+    <label for="body">Body</label>
+    <textarea name="body" id="body"></textarea>
+  </div>
+  <div>
+    <label for="keywords">Keywords</label>
+    <textarea name="keywords" id="keywords"></textarea>
+  </div>
+  <div>
+    <label for="description">Description</label>
+    <textarea name="description" id="description"></textarea>
+  </div>
+  <div>
+    <label for="published">Pub Date</label>
+    <input type="text" name="published" id="published">
+  </div>
       <input type="submit" value="Submit">
     </form>
   `;
 
-  var createUser = document.getElementById('createUser');
-  createUser.addEventListener('submit', function(e){
+  var createPost = document.getElementById('createPost');
+  createPost.addEventListener('submit', function(e){
     e.preventDefault();
 
-    formData = new FormData(createUser);
-    var url = 'http://localhost:3000/api/post/create';
+    formData = new FormData(createPost);
+    var url = 'http://localhost:3000/api/posts/create';
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
@@ -191,18 +208,18 @@ function createUser(){
 //Onload view index
 viewIndex();
 
-//If the inital page load has a hash, look up that user
+//If the inital page load has a hash, look up that post
 var hash = window.location.hash.substr(1);
 if(hash){
 
   let chunks = hash.split('-');
 
   if(chunks[0]=='edit'){
-    viewUser(chunks[1]);
+    viewPost(chunks[1]);
   }
 
   //if(chunks[0]=='create'){
-  //  createUser();
+  //  createPost();
   //}
 
 }

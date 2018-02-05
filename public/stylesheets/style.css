@@ -37,7 +37,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"], 
+textarea {
   font: 20px monospace;
   padding: 12px 20px;
   margin: .5em 0 1em;
