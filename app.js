@@ -7,7 +7,9 @@ var bodyParser = require('body-parser');
 
 var config = require ('../config.js')
 var mongoose = require('mongoose');
-var app use = require('helmet');
+var helmet = require('helmet');
+var compression = require('compression');
+
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
@@ -27,6 +29,9 @@ mongoose.connect(config.mongodb);
 
 //Hardens the server
 app.use(helmet());
+
+//Hardens the server
+app.use(compression());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,8 +56,8 @@ app.use(require('express-session')({
   cookie: {
     path: '/',
     domain: config.cookie.domain,
-    httpOnly: true,
-    secure: true,
+    //httpOnly: true,
+    //secure: true,
     maxAge: 1000 * 60 * 24 // 24 hours
   }
 }));
