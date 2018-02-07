@@ -42,12 +42,12 @@ var MongoStore = require('connect-mongo')(session);
 
 app.use(require('express-session')({
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  secret:'.?Qn28B>s|A{Vz~(w;hX;8v3Us$\H;[)|8(KH(HUNaW<*;:AI@h{`&pA~o|&uAj',
+  secret: config.secret,
   resave: false,
   saveUninitialized: false,
   cookie: {
     path: '/',
-    domain: 'localhost',
+    domain: config.cookie.domain,
     //domain: 'localhost',
     //httpOnly: true,
     //secure: true,
@@ -76,9 +76,9 @@ app.use(function(req, res, next) {
 passport.use(User.createStrategy());
 
 passport.use(new GitHubStrategy({
-    clientID:'7e787b757d47bded93e6',
-    clientSecret:'65d86f8118ef2f5cc3ced6213fb8bddd0337e3f7',
-    callbackURL: 'https://juliettahensgen.com/auth/github/callback'
+    clientID: config.gitHub.clientID,
+    clientSecret: config.gitHub.clientSecret,
+    callbackURL: config.gitHub.callbackURL
   },function(accessToken, refreshToken, profile, cb){
 
     //The ID MUST be cast to an INT
@@ -148,7 +148,7 @@ app.use(function(req, res, next){
 });
 
 app.use(function(req,res,next){
-return next();
+//return next();
 
   let whitelist = [
     '/',
@@ -180,9 +180,7 @@ return next();
     return next();
   }
 
-  res.status(401);
-  return res.send('unauthorized');
-  //return res.redirect('/users/login');
+  return res.redirect('/users/login');
 });
 
 app.use('/', index);
