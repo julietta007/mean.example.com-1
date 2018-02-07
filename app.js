@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var config = require ('../config.js')
 var mongoose = require('mongoose');
+var app use = require('helmet');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
@@ -19,11 +20,13 @@ var apiUsers = require('./routes/api/users');
 var apiPosts = require('./routes/api/posts');
 
 var app = express();
-
 var User = require('./models/user');
 
 //Connect to MongoDB
 mongoose.connect(config.mongodb);
+
+//Hardens the server
+app.use(helmet());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,9 +51,8 @@ app.use(require('express-session')({
   cookie: {
     path: '/',
     domain: config.cookie.domain,
-    //domain: 'localhost',
-    //httpOnly: true,
-    //secure: true,
+    httpOnly: true,
+    secure: true,
     maxAge: 1000 * 60 * 24 // 24 hours
   }
 }));
