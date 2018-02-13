@@ -15,6 +15,10 @@ function viewIndex(){
 
         let thisn = data['users'][i];
         let id=thisn._id;
+        let slug=thisn.slug;
+        let title=thisn.title;
+        let body=thisn.body;
+        let keywords=thisn.keywords;
         let name=thisn.last_name + ', ' + thisn.first_name;
         let username=thisn.username;
         let email=thisn.email;

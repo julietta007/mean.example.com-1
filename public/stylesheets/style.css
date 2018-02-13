@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 20px "Ubuntu", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -28,7 +28,7 @@ a {
 }
 
 .table tbody th {
-  text-align: left;
+  text-align: center;
 }
 
 label {
@@ -37,7 +37,7 @@ label {
 }
 
 input[type="text"],
-input[type="password"], 
+input[type="password"],
 textarea {
   font: 20px monospace;
   padding: 12px 20px;

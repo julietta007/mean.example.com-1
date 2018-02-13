@@ -159,6 +159,7 @@ app.use(function(req,res,next){
 
   let whitelist = [
     '/',
+    '/resume',
     '/favicon.ico',
     '/public',
     '/users/login',
