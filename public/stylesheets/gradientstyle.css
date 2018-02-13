@@ -8,7 +8,8 @@
     min-height: 100px;
     background: #000;
     box-sizing: border-box;
-    border: 7px solid #fff;
+    padding: 20px;
+    border: 12px solid #fff;
     display: table;
 }
 
@@ -112,7 +113,7 @@
     background: #f2f2f2;
     color: #fff;
 }
-  
+
 .l21{
     background: #ffffff;
     color: #fff;
