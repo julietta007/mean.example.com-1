@@ -1,0 +1,64 @@
+.flexbox{
+    display: flex;
+}
+
+.flex-item{
+    flex: 1;
+    width: 14.285714285714285714285714285714%;
+    min-height: 100px;
+    background: #000;
+    box-sizing: border-box;
+    border: 7px solid #fff;
+    display: table;
+}
+
+.flex-item > div{
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}
+
+.l1{
+    background: #000;
+    color: #fff;
+}
+
+.l2{
+    background: #010101;
+}
+
+.l3{
+    background: #111;
+}
+
+.l4{
+    background: #121212;
+}
+
+.l5{
+    background: #222;
+}
+
+.l6{
+    background: #232323;
+}
+
+.l7{
+    background: #333;
+}
+
+.l8{
+    background: #333;
+}
+
+.l9{
+    background: #343434;
+}
+
+.l10{
+    background: #444;
+}
+
+.l11{
+    background: #454545;
+}
