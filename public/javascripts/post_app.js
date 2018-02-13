@@ -1,6 +1,6 @@
 function viewIndex(){
 
-  var url = 'https://juliettaurdiales.com/api/posts';
+  var url = 'https://juliettahensgen.com/api/posts';
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url);
@@ -45,7 +45,7 @@ function viewIndex(){
 
 function viewPost(postId){
 
-  var url = 'https://juliettaurdiales.com/api/posts/view/' + postId;
+  var url = 'https://juliettahensgen.com/api/posts/view/' + postId;
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url);
@@ -118,7 +118,7 @@ function viewPost(postId){
       e.preventDefault();
 
       formData = new FormData(editPost);
-      var url = 'https://juliettaurdiales.com/api/posts/edit';
+      var url = 'https://juliettahensgen.com/api/posts/edit';
 
       var xhr = new XMLHttpRequest();
       xhr.open('POST', url);
@@ -181,7 +181,7 @@ function createPost(){
     e.preventDefault();
 
     formData = new FormData(createPost);
-    var url = 'https://juliettaurdiales.com/api/posts/create';
+    var url = 'https://juliettahensgen.com/api/posts/create';
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
