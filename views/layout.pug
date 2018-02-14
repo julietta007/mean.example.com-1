@@ -1,22 +1,24 @@
 doctype html
 html
   head
+    link(href="https://fonts.googleapis.com/css?family=Montserrat|Nanum+Gothic" rel="stylesheet")
     title= title
     link(rel='stylesheet', href='/stylesheets/gradientstyle.css')
+      
   body
-  
-  nav
-    a(href="/") Home
-    |&nbsp;|&nbsp;
-    
-    if session.user.id
-      a(href="/users")about me
+
+    nav
+      a(href="/") Home
       |&nbsp;|&nbsp;
-      a(href="/users/logout") resume
       
-    else
-      
-      a(href="/users/login") Log In
+      if session.user.id
+        a(href="/users") about me
+        |&nbsp;|&nbsp;
+        a(href="/users/logout") resume
+        
+      else
+        
+        a(href="/users/login") Log In
 
   main
    block content

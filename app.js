@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var config = require ('../config.js')
+var config = require('../config.js')
 var mongoose = require('mongoose');
 var helmet = require('helmet');
 var compression = require('compression');
@@ -41,7 +41,9 @@ app.set('view engine', 'pug');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.use(cookieParser());
 
@@ -49,7 +51,9 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 app.use(require('express-session')({
-  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection
+  }),
   secret: config.secret,
   resave: false,
   saveUninitialized: false,
@@ -69,60 +73,63 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Set up CORS and proper
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-    if ('OPTIONS' == req.method) {
-         res.send(200);
-     } else {
-         next();
-     }
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+  if ('OPTIONS' == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
 });
 
 passport.use(User.createStrategy());
 
 passport.use(new GitHubStrategy({
-    clientID: config.gitHub.clientID,
-    clientSecret: config.gitHub.clientSecret,
-    callbackURL: config.gitHub.callbackURL
-  },function(accessToken, refreshToken, profile, cb){
+  clientID: config.gitHub.clientID,
+  clientSecret: config.gitHub.clientSecret,
+  callbackURL: config.gitHub.callbackURL
+}, function(accessToken, refreshToken, profile, cb) {
 
-    //The ID MUST be cast to an INT
-    User.findOne({"githubData.id":parseInt(profile.id)}, function (err, user) {
+  //The ID MUST be cast to an INT
+  User.findOne({
+    "githubData.id": parseInt(profile.id)
+  }, function(err, user) {
 
-      if(err) return done(err);
+    if (err) return done(err);
 
-      if(user) {
+    if (user) {
 
-        //TODO update the githubData
-        return cb(err, user);
+      //TODO update the githubData
+      return cb(err, user);
 
-      } else {
+    } else {
 
-        var newUser = new User();
-        newUser.githubData = profile._json;
+      var newUser = new User();
+      newUser.githubData = profile._json;
 
-        //When creating from a third party skip validation as we do not want to
-        //try and guess those fields
-        //TODO send the user to a page for supplying a username and email
-        newUser.save({ validateBeforeSave: false }, function(err) {
+      //When creating from a third party skip validation as we do not want to
+      //try and guess those fields
+      //TODO send the user to a page for supplying a username and email
+      newUser.save({
+        validateBeforeSave: false
+      }, function(err) {
 
-            if(err){
-              throw err;
-            }
+        if (err) {
+          throw err;
+        }
 
-            return cb(err, newUser);
-        });
+        return cb(err, newUser);
+      });
 
-      }
-    });
+    }
+  });
 
-  })
-);
+}));
 
 
-passport.serializeUser(function(user, done){
+passport.serializeUser(function(user, done) {
   return done(null, {
     id: user._id,
     username: user.username,
@@ -132,16 +139,16 @@ passport.serializeUser(function(user, done){
   });
 });
 
-passport.deserializeUser(function(user, done){
+passport.deserializeUser(function(user, done) {
   return done(null, user);
 });
 
 //Create the session
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
 
-  var userSession={};
+  var userSession = {};
 
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     userSession = req.session.passport.user;
   }
 
@@ -154,8 +161,8 @@ app.use(function(req, res, next){
   next();
 });
 
-app.use(function(req,res,next){
-//return next();
+app.use(function(req, res, next) {
+  //return next();
 
   let whitelist = [
     '/',
@@ -168,7 +175,7 @@ app.use(function(req,res,next){
     '/auth/github'
   ];
 
-  if(whitelist.indexOf(req.url) !== -1){
+  if (whitelist.indexOf(req.url) !== -1) {
     return next();
   }
 
@@ -178,13 +185,13 @@ app.use(function(req,res,next){
     '/auth/github/callback'
   ];
 
-  for(var sub of subs){
-    if(req.url.substring(0, sub.length)===sub){
+  for (var sub of subs) {
+    if (req.url.substring(0, sub.length) === sub) {
       return next();
     }
   }
 
-  if(req.isAuthenticated()){
+  if (req.isAuthenticated()) {
     return next();
   }
 

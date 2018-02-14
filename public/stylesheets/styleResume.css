@@ -1,17 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i');
+
 body {
   padding: 0px;
-  font: 12px 'Noto Serif', serif, Ubuntu, Helvetica, Arial, sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  color: #0d0d0d;
 }
 
 a {
-  color: #00B7FF;
+  color: #000;
+}
+
+a {
+  color: #000;
 }
 
 p {
     line-height: 20%;
 }
 
-h2, h3, h4 {
+h2, h3, h4, h5, {
     padding: 0;
     margin: 0;
 }
