@@ -2,8 +2,8 @@
 
 body {
   padding: 50px;
-  font-family: 'Nanum Gothic', sans-serif;
   font-family: 'Montserrat', sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
   }
 
 .table {
@@ -38,7 +38,7 @@ label {
 input[type="text"],
 input[type="password"],
 textarea {
-  font: 20px monospace;
+  font: 40px monospace;
   padding: 12px 20px;
   margin: .5em 0 1em;
   display: inline-block;
