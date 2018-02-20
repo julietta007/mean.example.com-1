@@ -23,6 +23,15 @@
   text-align: center;
 }
 
+.row{ 
+    display:flex;
+}
+
+.col{
+    flex: 0 0 50%;
+    /*border: 1px solid #998000;*/
+}
+
 .font-size: headline {
   90px;
 }

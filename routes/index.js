@@ -9,6 +9,11 @@ router.get('/resume', function(req, res, next){
     title:'Julietta\'s resume'
   });
 });
+router.get('/aldi', function(req, res, next){
+  res.render('aldi',{
+    title:'Julietta\'s resume'
+  });
+});
 ///crash server fort pm2 texting
 router.get('/exit', function(req, res, next){
   process.exit(1);

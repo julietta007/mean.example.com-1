@@ -172,7 +172,8 @@ app.use(function(req, res, next) {
     '/users/login',
     '/users/register',
     '/api/users/register',
-    '/auth/github'
+    '/auth/github',
+    '/aldi'
   ];
 
   if (whitelist.indexOf(req.url) !== -1) {
