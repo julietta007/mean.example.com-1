@@ -1,38 +1,23 @@
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/styleResume.css')
-    link(rel='stylesheet', href='/stylesheets/gradientstyle.css')
-    link(href="https://fonts.googleapis.com/css?family=Montserrat|Nanum+Gothic" rel="stylesheet")
+extends portfolioLayout.pug
+block content
+  div.headline.clearfix
+    div.left
+      a(href='/' style='font-size:2.5em;') ALDI Foods
+      a(href='/' style='font-size:1.25em;') John & Low Advertising
 
-  body
-    div.headline.clearfix
-      div.left
-        a(href='/' style='font-size:2.5em;') Julietta Hensgen
-        a(href='/' style='font-size:1.25em;') Production Artist/Developer
+    div.right(style='text-align: right; display: inline-block;')
+      a(href='/' style='font-size:2.25em;') Graphic Designer
+    
+      a(href='/' style='font-size:1em;') Flyer, ROP & Banner
+      a(href='/' style='font-size:1em;') Illustrator
+      a(href='/' style='font-size:1em;') Photoshop
+      a(href='/' style='font-size:1em;') Quark  
 
-      div.right(style='text-align: right; display: inline-block;')
-        a(href='/' style='font-size:2.25em;') AdobeCC
-      
-        a(href='/' style='font-size:1em;') InDesign 
-        a(href='/' style='font-size:1em;') Illustrator
-        a(href='/' style='font-size:1em;') Photoshop
-        a(href='/' style='font-size:1em;') Quark  
-
-    nav
-      a(href='/') projects
-      span &nbsp;| &nbsp;
-      a(href='/resume') resume
-      
-    main
-      img(src='images/GO_BuildingSign_12x5_2008.png')
-
-    script(defer, src="https://use.fontawesome.com/releases/v5.0.4/js/all.js")
-
-      a(href=) $nbsp,$nbsp,$nbsp,$nbsp,$nbs,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp,$nbsp
-
-
-
-  div.center   
-    a(href='/') Designer knowledgeable on HTML, CSS, PHP, JavaScript, AJAX, Bootstrap, MongoDB, Express, Angular, Apache Cordova, Ionic, jQuery, MySQL and CakePHP
+  nav
+    a(href='/') projects
+    span &nbsp;| &nbsp;
+    a(href='/resume') resume
+    
+  main
+    img(src='images/GO_BuildingSign_12x5_2008.png')
+    
