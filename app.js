@@ -173,7 +173,13 @@ app.use(function(req, res, next) {
     '/users/register',
     '/api/users/register',
     '/auth/github',
-    '/aldi'
+    '/ace',
+    '/aldi',
+    '/hallmark',
+    '/jhalcomb',
+    '/chicagoPublicSchools',
+    '/Alliance Pastry'
+  
   ];
 
   if (whitelist.indexOf(req.url) !== -1) {
