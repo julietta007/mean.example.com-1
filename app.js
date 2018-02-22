@@ -178,7 +178,7 @@ app.use(function(req, res, next) {
     '/hallmark',
     '/jhalcomb',
     '/chicagoPublicSchools',
-    '/Alliance Pastry'
+    '/hallmark'
   
   ];
 
