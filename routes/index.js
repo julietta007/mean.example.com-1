@@ -24,7 +24,7 @@ router.get('/ace', function(req, res, next){
     title:'Julietta\'s resume'
   });
 });
-router.get('/jhalcomb', function(req, res, next){
+router.get('/auto', function(req, res, next){
   res.render('jhalcomb',{
     title:'Julietta\'s resume'
   });
@@ -34,18 +34,18 @@ router.get('/jpMorganChase', function(req, res, next){
     title:'Julietta\'s resume'
   });
 });
-router.get('/chicagoPublicSchools', function(req, res, next){
-  res.render('chicagoPublicSchools',{
+router.get('/andMore', function(req, res, next){
+  res.render('And More',{
     title:'Julietta\'s resume'
   });
 });
-router.get('/spec', function(req, res, next){
-  res.render('spec',{
+router.get('/kohls', function(req, res, next){
+  res.render('Spec',{
     title:'Julietta\'s resume'
   });
 });
-router.get('/and more', function(req, res, next){
-  res.render('and more',{
+router.get('/seven', function(req, res, next){
+  res.render('Seven World Wide',{
     title:'Julietta\'s resume'
   });
 });

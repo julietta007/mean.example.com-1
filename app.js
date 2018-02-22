@@ -174,12 +174,12 @@ app.use(function(req, res, next) {
     '/api/users/register',
     '/auth/github',
     '/ace',
+    '/andMore',
     '/aldi',
     '/hallmark',
     '/jhalcomb',
-    '/chicagoPublicSchools',
-    '/hallmark'
-  
+    '/kohls',
+    '/seven' 
   ];
 
   if (whitelist.indexOf(req.url) !== -1) {
