@@ -19,23 +19,23 @@ router.get('/hallmark', function(req, res, next){
     title:'Julietta\'s resume'
   });
 });
-router.get('/ace', function(req, res, next){
-  res.render('ace',{
+router.get('/kennedy', function(req, res, next){
+  res.render('kennedy',{
     title:'Julietta\'s resume'
   });
 });
-router.get('/auto', function(req, res, next){
+router.get('/jhalcomb', function(req, res, next){
   res.render('jhalcomb',{
     title:'Julietta\'s resume'
   });
 });
-router.get('/jpMorganChase', function(req, res, next){
-  res.render('jpMorganChase',{
+router.get('/chase', function(req, res, next){
+  res.render('chase',{
     title:'Julietta\'s resume'
   });
 });
 router.get('/andMore', function(req, res, next){
-  res.render('And More',{
+  res.render('andMore',{
     title:'Julietta\'s resume'
   });
 });
@@ -49,6 +49,12 @@ router.get('/seven', function(req, res, next){
     title:'Julietta\'s resume'
   });
 });
+router.get('/family', function(req, res, next){
+  res.render('Family',{
+    title:'Julietta\'s resume'
+  });
+});
+
 
 ///crash server fort pm2 texting
 router.get('/exit', function(req, res, next){

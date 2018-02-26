@@ -171,6 +171,7 @@ a.flex-item {
 }
 
 .l21 {
-  background: #ffffff;
+  background: #ffffff url('/images/personal_logo/2018_2c_logo_h_logo.png') no-repeat;
+  background-size: 100%;
   color: #000; 
 }
