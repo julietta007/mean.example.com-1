@@ -50,7 +50,7 @@ router.get('/seven', function(req, res, next){
   });
 });
 router.get('/family', function(req, res, next){
-  res.render('Family',{
+  res.render('family',{
     title:'Julietta\'s resume'
   });
 });
