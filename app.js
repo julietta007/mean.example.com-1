@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var config = require('../config.js')
+var config = require('./config.js')
 var mongoose = require('mongoose');
 var helmet = require('helmet');
 var compression = require('compression');
@@ -174,14 +174,17 @@ app.use(function(req, res, next) {
     '/api/users/register',
     '/auth/github',
     '/aldi',
-    '/andMore',
+    '/ace',
+    '/bank_one',
     '/hallmark',
     '/jhalcomb',
-    '/kennedy',
+    '/chicago_public_schools',
     '/kohls',
-    '/seven',
-    '/chase',
-    '/family'
+    '/l_m',
+    '/virginia_slims',
+    '/contact',
+    '/landing',
+    '/development'
     
   ];
 

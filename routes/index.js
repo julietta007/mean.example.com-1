@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
-
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'production, design, develop', name: 'Julietta'});
+});
+router.get('/design', function(req, res, next) {
+  res.render('design', { title: 'production, design, develop', name: 'Julietta'});
 });
 router.get('/resume', function(req, res, next){
   res.render('resume',{
@@ -14,13 +16,23 @@ router.get('/aldi', function(req, res, next){
     title:'Julietta\'s resume'
   });
 });
+router.get('/ace', function(req, res, next){
+  res.render('ace',{
+    title:'Julietta\'s resume'
+  });
+});
+router.get('/bank_one', function(req, res, next){
+  res.render('bank_one',{
+    title:'Julietta\'s resume'
+  });
+});
 router.get('/hallmark', function(req, res, next){
   res.render('hallmark',{
     title:'Julietta\'s resume'
   });
 });
-router.get('/kennedy', function(req, res, next){
-  res.render('kennedy',{
+router.get('/chicago_public_schools', function(req, res, next){
+  res.render('chicago_public_schools',{
     title:'Julietta\'s resume'
   });
 });
@@ -29,8 +41,8 @@ router.get('/jhalcomb', function(req, res, next){
     title:'Julietta\'s resume'
   });
 });
-router.get('/chase', function(req, res, next){
-  res.render('chase',{
+router.get('/l_m', function(req, res, next){
+  res.render('l_m',{
     title:'Julietta\'s resume'
   });
 });
@@ -44,13 +56,13 @@ router.get('/kohls', function(req, res, next){
     title:'Julietta\'s resume'
   });
 });
-router.get('/seven', function(req, res, next){
-  res.render('Seven World Wide',{
+router.get('/virginia_slims', function(req, res, next){
+  res.render('virginia_slims',{
     title:'Julietta\'s resume'
   });
 });
-router.get('/family', function(req, res, next){
-  res.render('family',{
+router.get('/contact', function(req, res, next){
+  res.render('contact',{
     title:'Julietta\'s resume'
   });
 });

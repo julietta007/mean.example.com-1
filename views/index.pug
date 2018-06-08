@@ -1,55 +1,20 @@
-extends wslayout
-
 block content
-  .flexbox
-    a(href='aldi').flex-item.l1
-      div
-        | ALDI Foods
-    a(href='#').flex-item.l2
-      div
-    a(href='#').flex-item.l3
-    a(href='#').flex-item.l4
-    a(href='#').flex-item.l5
-    a(href='kennedy').flex-item.l6
-      div
-        | Chicago Public Schools
-    a(href='#').flex-item.l7
-      div
-        | 
-  .flexbox
-    a(href='#').flex-item.l8
-      div
-        | 
-    a(href='#').flex-item.l9
-      div
-        | 
-    a(href='#').flex-item.l10
-    a(href='hallmark').flex-item.l11
-      div
-        | Hallmark   
-    a(href='#').flex-item.l12
-    a(href='#').flex-item.l13
-    a(href='#').flex-item.l14
-      div
-       | 
-  .flexbox
-    a(href='jhalcomb').flex-item.l15
-      div
-       | JHalcomb Advertising
-    a(href='#').flex-item.l16
-    a(href='chase').flex-item.l17
-      div 
-       | JPMorgan Chase
-    a(href='#').flex-item.l18
-    a(href='#').flex-item.l19
-      div
-        | 
-    a(href='andMore').flex-item.l20
-      div
-        | Spec & more...
-    a(href='family').flex-item.l21
-      div
-        | 
-
+  doctype html
+  html
+    head
+      link(href="stylesheets/home.css" rel="stylesheet")
+      link(href="https://fonts.googleapis.com/css?family=DancingScript" rel="stylesheet")
+      title= title
         
-  
+  body
+    div.headline.clearfix
+      div.center
+        div.nav
+          a(href='/' style='font-size:1em;') design
+          a(href='/' style='font-size:1em;') develop      
+          a(href='/' style='font-size:1em;') contact
+        div
+          a(href='/' class='design') Design
+      
+    main
+      img(src='images/landing/landing.png' style='filter: opacity(20%)' width='100%')

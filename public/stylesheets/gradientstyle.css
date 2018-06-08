@@ -76,102 +76,42 @@ a.flex-item {
 }
 
 .l2 {
-  background: #0d0d0d;
-  color: #fff;
-}
-
-.l3 {
-  background: #1a1a1a;
-  color: #fff;
-}
-
-.l4 {
-  background: #262626;
-  color: #fff;
-}
-
-.l5 {
   background: #333333;
   color: #fff;
 }
 
-.l6 {
-  background: #404040;
-  color: #fff;
-}
-
-.l7 {
+.l3 {
   background: #4d4d4d;
   color: #fff;
 }
 
-.l8 {
-  background: #595959;
-  color: #fff;
-}
-
-.l9 {
-  background: #666666;
-  color: #fff;
-}
-
-.l10 {
-  background: #737373;
-  color: #fff;
-}
-
-.l11 {
+.l4 {
   background: #808080;
   color: #fff;
 }
 
-.l12 {
-  background: #8c8c8c;
-  color: #fff;
-}
-
-.l13 {
+.l5 {
   background: #999999;
   color: #fff;
 }
 
-.l14 {
-  background: #a6a6a6;
-  color: #fff;
-}
-
-.l15 {
+.l6 {
   background: #b3b3b3;
-  color: #fff;
+  color: #000;
 }
 
-.l16 {
-  background: #bfbfbf;
-  color: #fff;
-}
-
-.l17 {
+.l7 {
   background: #cccccc;
   color: #000;
 }
 
-.l18 {
-  background: #d9d9d9;
-  color: #000;
-}
-
-.l19 {
-  background: #e6e6e6;
-  color: #000;
-}
-
-.l20 {
+.l8 {
   background: #f2f2f2;
   color: #000;
 }
 
-.l21 {
-  background: #ffffff url('/images/personal_logo/2018_2c_logo_h_logo.png') no-repeat;
-  background-size: 100%;
-  color: #000; 
+.l9 {
+  background: #ffffff url('/images/personal_logo/2018_2c_logo_h_logo.png') no-repeat center;
+  background-size: 40%;
+  color: #fff; 
 }
