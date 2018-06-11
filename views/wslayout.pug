@@ -7,18 +7,22 @@ html
     link(href="https://fonts.googleapis.com/css?family=Montserrat|Nanum+Gothic" rel="stylesheet")
 
   body
-    div.headline.clearfix
+    div.clearfix
       div.left
         a(href='/' style='font-size:2.5em;') Julietta Hensgen
-        a(href='/' style='font-size:1.25em;') Designer/Developer
+        div
+          a(href='/' style='font-size:1.25em;') Designer/
+          a(href='/develop' style='font-size:1.25em;') Developer
+
 
       div.right(style='text-align: right; display: inline-block;')
-        a(href='/' style='font-size:2em;') AdobeCC
-      
-        a(href='/' style='font-size:1em;') InDesign 
-        a(href='/' style='font-size:1em;') Illustrator
-        a(href='/' style='font-size:1em;') Photoshop
-        a(href='/' style='font-size:1em;') Quark  
+        div.headline
+          a(href='/' style='font-size:2em;') AdobeCC
+        
+          a(href='/' style='font-size:1em;') InDesign 
+          a(href='/' style='font-size:1em;') Illustrator
+          a(href='/' style='font-size:1em;') Photoshop
+          a(href='/' style='font-size:1em;') Quark  
 
     nav
       a(href='/') projects
