@@ -1,10 +1,17 @@
 var express = require('express');
 var router = express.Router();
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'production, design, develop', name: 'Julietta'});
+  res.render('index', { 
+    title: 'production, design, develop', name: 'Julietta'});
 });
 router.get('/design', function(req, res, next) {
-  res.render('design', { title: 'production, design, develop', name: 'Julietta'});
+  res.render('design', { 
+    title: 'production, design, develop', name: 'Julietta'});
+});
+router.get('/develop', function(req, res, next){
+  res.render('develop',{
+    title:'Julietta\'s resume'
+  });
 });
 router.get('/resume', function(req, res, next){
   res.render('resume',{
@@ -43,11 +50,6 @@ router.get('/jhalcomb', function(req, res, next){
 });
 router.get('/l_m', function(req, res, next){
   res.render('l_m',{
-    title:'Julietta\'s resume'
-  });
-});
-router.get('/andMore', function(req, res, next){
-  res.render('andMore',{
     title:'Julietta\'s resume'
   });
 });

@@ -176,15 +176,16 @@ app.use(function(req, res, next) {
     '/aldi',
     '/ace',
     '/bank_one',
-    '/hallmark',
-    '/jhalcomb',
     '/chicago_public_schools',
+    '/contact',
+    '/design',
+    '/develop',
+    '/hallmark',
+    '/index',
+    '/jhalcomb',
     '/kohls',
     '/l_m',
-    '/virginia_slims',
-    '/contact',
-    '/landing',
-    '/development'
+    '/virginia_slims'
     
   ];
 
